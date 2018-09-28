@@ -36,6 +36,9 @@ jobs:
     # run tests!
     #- run: yarn test
   package:
+    docker:
+    - image: ubuntu:14.04
+    working_directory: ~/repo
     steps:
       name: package lib
       -run: npm run package
