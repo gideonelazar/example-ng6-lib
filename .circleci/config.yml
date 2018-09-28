@@ -40,8 +40,9 @@ jobs:
     - image: ubuntu:14.04
     working_directory: ~/repo
     steps:
-      name: package lib
-      -run: npm run package
+      -run:
+        name: package lib
+        command: npm run package
 
 workflows:
   version: 2
