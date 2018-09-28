@@ -35,9 +35,13 @@ jobs:
 
     # run tests!
     #- run: yarn test
+  package:
+    steps:
+      -run: npm run package
 
 workflows:
   version: 2
   build-package:
     jobs:
       - build
+      - package
