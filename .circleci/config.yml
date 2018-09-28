@@ -45,5 +45,5 @@ workflows:
     jobs:
       - build
       - package:
-        requires:
-        - build
+          requires:
+            - build
