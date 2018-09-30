@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
     # specify the version you desire here
-    - image: circleci/node:node:8-browsers
+    - image: circleci/node:8-browsers
     steps:
     - checkout
     - restore_cache:
@@ -27,7 +27,7 @@ jobs:
   package:
     working_directory: ~/repo
     docker:
-    - image: circleci/node:node:8-browsers
+    - image: circleci/node:8-browsers
     steps:
      - checkout:
           path: ~/repo
