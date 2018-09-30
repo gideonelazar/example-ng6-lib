@@ -20,6 +20,10 @@ jobs:
         paths:
         - node_modules
         key: v1-dependencies-{{ checksum "package.json" }}
+    - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - node_modules
     # run tests!
     #- run: yarn test
   package:
