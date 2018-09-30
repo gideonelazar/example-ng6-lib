@@ -13,8 +13,6 @@ jobs:
     - restore_cache:
         keys:
         - v1-dependencies-{{ checksum "package.json" }}
-        # fallback to using the latest cache if no exact match is found
-        - v1-dependencies-
     - run: npm install
     - save_cache:
         paths:
@@ -33,6 +31,12 @@ jobs:
     steps:
      - checkout:
           path: ~/repo
+     - run:
+          name: Setup Environment Variable
+          command: |
+            echo "export PATH=$PATH:~/project/node_modules/.bin" >> $BASH_ENV
+      - attach_workspace:
+          at:  ~/project
      - run: npm run package
 
 workflows:
