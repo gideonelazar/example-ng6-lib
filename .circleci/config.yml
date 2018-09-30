@@ -35,7 +35,7 @@ jobs:
           name: Setup Environment Variable
           command: |
             echo "export PATH=$PATH:~/project/node_modules/.bin" >> $BASH_ENV
-      - attach_workspace:
+     - attach_workspace:
           at:  ~/project
      - run: npm run package
 
