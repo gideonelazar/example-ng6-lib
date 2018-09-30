@@ -28,9 +28,11 @@ jobs:
     #- run: yarn test
   package:
     docker:
-    - image: circleci/node:7.10
     working_directory: ~/repo
+    - image: circleci/node:7.10
     steps:
+     - checkout:
+          path: ~/project
     - run: npm run package
 
 workflows:
