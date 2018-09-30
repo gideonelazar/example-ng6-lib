@@ -36,7 +36,7 @@ jobs:
           command: |
             echo "export PATH=$PATH:~/project/node_modules/.bin" >> $BASH_ENV
      - attach_workspace:
-          at:  ~/project
+          at:  ~/repo
      - run: npm run package
 
 workflows:
