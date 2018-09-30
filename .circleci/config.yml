@@ -33,7 +33,7 @@ jobs:
     steps:
      - checkout:
           path: ~/project
-    - run: npm run package
+     - run: npm run package
 
 workflows:
   version: 2
