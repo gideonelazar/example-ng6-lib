@@ -1,7 +1,6 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/repo
     docker:
     # specify the version you desire here
     - image: circleci/node:9-browsers
@@ -34,8 +33,14 @@ jobs:
             echo "export PATH=$PATH:~/repo/node_modules/.bin" >> $BASH_ENV
      - attach_workspace:
           at:  ~/repo
-     - run: npm run package
-
+     - run:
+         name: package
+         command:
+           npm i
+           npm run package
+     - run:
+         name: release
+         command: npm run semantic-release || true
 workflows:
   version: 2
   build-package:
@@ -44,3 +49,10 @@ workflows:
     - package:
         requires:
           - build
+
+
+  steps:
+  - checkout
+  - run:
+      name: install
+      command: npm install
