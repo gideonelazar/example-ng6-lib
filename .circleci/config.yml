@@ -2,19 +2,18 @@ version: 2
 jobs:
   build:
     docker:
-    # specify the version you desire here
-    - image: circleci/node:9-browsers
+      - image: circleci/node:9-browsers
     steps:
-    - checkout
-    - restore_cache:
-        keys:
-        - v1-dependencies-{{ checksum "package.json" }}
-    - run: npm install
-    - save_cache:
-        paths:
-        - node_modules
-        key: v1-dependencies-{{ checksum "package.json" }}
-    - persist_to_workspace:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+           key: v1-dependencies-{{ checksum "package.json" }}
+      - persist_to_workspace:
           root: ~/repo
           paths:
             - node_modules
@@ -23,30 +22,30 @@ jobs:
   package:
     working_directory: ~/repo
     docker:
-    - image: circleci/node:9-browsers
+      - image: circleci/node:9-browsers
     steps:
-     - checkout:
+      - checkout:
           path: ~/repo
-     - run:
+      - run:
           name: Setup Environment Variable
           command: |
             echo "export PATH=$PATH:~/repo/node_modules/.bin" >> $BASH_ENV
-     - attach_workspace:
+      - attach_workspace:
           at:  ~/repo
-     - run:
-         name: package
-         command:
-           npm i
-           npm run package
-     - run:
+      - run:
+          name: package
+          command:
+            npm i
+            npm run package
+      - run:
          name: release
          command: npm run semantic-release || true
 workflows:
   version: 2
   build-package:
     jobs:
-    - build
-    - package:
+      - build
+      - package:
         requires:
           - build
 
