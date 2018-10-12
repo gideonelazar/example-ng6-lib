@@ -20,18 +20,18 @@ jobs:
     # run tests!
     #- run: yarn test
   package:
-    working_directory: ~/repo
+    working_directory: ~/project
     docker:
       - image: circleci/node:9-browsers
     steps:
       - checkout:
-          path: ~/repo
+          path: ~/project
       - run:
           name: Setup Environment Variable
           command: |
-            echo "export PATH=$PATH:~/repo/node_modules/.bin" >> $BASH_ENV
+            echo "export PATH=$PATH:~/project/node_modules/.bin" >> $BASH_ENV
       - attach_workspace:
-          at:  ~/repo
+          at:  ~/project
       - run:
           name: package
           command:
