@@ -44,14 +44,7 @@ workflows:
   version: 2
   build-package:
     jobs:
-      - build
+      - build:
       - package:
         requires:
           - build
-
-
-  steps:
-  - checkout
-  - run:
-      name: install
-      command: npm install
