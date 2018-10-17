@@ -39,7 +39,7 @@ jobs:
             npm run package
       - run:
          name: release
-         command: npm run semantic-release || true
+         command: npx run semantic-release || true
 
 workflows:
   version: 2
