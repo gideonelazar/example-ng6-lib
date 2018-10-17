@@ -49,13 +49,10 @@ workflows:
           type: approval
           requires:
             - build
+      - package:
   package:
     jobs:
       - build
-      - hold:
-          type: approval
-          requires:
-            - build
       - package:
           requires:
             - hold
