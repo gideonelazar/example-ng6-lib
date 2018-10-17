@@ -1,4 +1,4 @@
-# example-ng6-lib
+# release
 
 Example Angular 6 Library
 
