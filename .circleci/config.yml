@@ -49,7 +49,7 @@ workflows:
           type: approval
           requires:
             - build
-      - package:
+      - package
   package:
     jobs:
       - build
