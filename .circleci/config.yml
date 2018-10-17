@@ -48,12 +48,12 @@ workflows:
       - hold:
           type: approval
           requires:
-          - build
+            - build
   package:
       - hold:
           type: approval
           requires:
-          - build
+            - build
       - package:
           requires:
             - hold
