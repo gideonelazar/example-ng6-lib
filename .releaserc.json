@@ -1,25 +1,15 @@
 {
-  "publish": [
-    "@semantic-release/npm",
-    "@semantic-release/github"
-  ],
   "verifyConditions": [
-    "@semantic-release/changelog",
-    "@semantic-release/npm",
-    "@semantic-release/git"
+    "@semantic-release/git",
+    "@semantic-release/npm"
   ],
   "prepare": [
-    "@semantic-release/changelog",
-    "@semantic-release/npm",
-    {
-      "path": "@semantic-release/git",
-      "assets": [ "package.json" ],
-      "message": "Release: ${nextRelease.version}"
-    }
+    "@semantic-release/git",
+    "@semantic-release/npm"
   ],
-  "success": [],
-  "fail": [],
-  "noCi": true,
-  "dryRun": false,
-  "tagFormat": "validator/${version}"
+  "publish": [
+    "@semantic-release/npm"
+  ],
+  "success": null,
+  "fail": null
 }
