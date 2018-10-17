@@ -50,6 +50,7 @@ workflows:
           requires:
             - build
   package:
+    jobs:
       - hold:
           type: approval
           requires:
